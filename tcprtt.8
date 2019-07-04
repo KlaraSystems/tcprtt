@@ -1,6 +1,6 @@
 .\" Copyright (C) 2016 Olivier Poitrey <rs@netflix.com>
 .\" All rights reserved.
-.\" 
+.\"
 .\" Redistribution and use in source and binary forms, with or without
 .\" modification, are permitted provided that the following conditions
 .\" are met:
@@ -12,7 +12,7 @@
 .\"    notice(s), this list of conditions and the following disclaimer in
 .\"    the documentation and/or other materials provided with the
 .\"    distribution.
-.\" 
+.\"
 .\" THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S) ``AS IS'' AND ANY
 .\" EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 .\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
@@ -24,27 +24,32 @@
 .\" WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 .\" OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
 .\" EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-.\" 
+.\"
 .\" $FreeBSD$
+.Dd June 20, 2019
 .Dt TCPRTT 8
 .Os
 .Sh NAME
 .Nm tcprtt
-.Nd Measures TCP handshake RTT using the stats(9) statistics framework
+.Nd measure TCP handshake RTT using the stats(3) framework
 .Sh SYNOPSIS
 .Nm
 .Op Fl f
-.Ar <host>
-.Ar <port>
+.Ar host
+.Ar port
 .Sh DESCRIPTION
 The
 .Nm
 utility reliably measures the TCP handshake round trip time
-using the stats(9) statistics framework.
+using the
+.Xr stats 3
+statistics framework.
 .Pp
-Both IPv4 and IPv6 are supported. If the <host> argument is a hostname
-containing serveral A and AAAA records, one line per record will be
-printed.
+Both IPv4 and IPv6 are supported.
+If the
+.Ar host
+argument is a hostname containing several A and AAAA records,
+one line per record will be printed.
 .Pp
 The options are as follows:
 .Bl -tag -width indent
@@ -61,3 +66,5 @@ printed in place of the RTT.
 .Pp
 If at least one entry returns an error, the command exits with the value
 of the last encountered error.
+.Sh SEE ALSO
+.Xr stats 3
