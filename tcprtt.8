@@ -1,0 +1,63 @@
+.\" Copyright (C) 2016 Olivier Poitrey <rs@netflix.com>
+.\" All rights reserved.
+.\" 
+.\" Redistribution and use in source and binary forms, with or without
+.\" modification, are permitted provided that the following conditions
+.\" are met:
+.\" 1. Redistributions of source code must retain the above copyright
+.\"    notice(s), this list of conditions and the following disclaimer as
+.\"    the first lines of this file unmodified other than the possible
+.\"    addition of one or more copyright notices.
+.\" 2. Redistributions in binary form must reproduce the above copyright
+.\"    notice(s), this list of conditions and the following disclaimer in
+.\"    the documentation and/or other materials provided with the
+.\"    distribution.
+.\" 
+.\" THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDER(S) ``AS IS'' AND ANY
+.\" EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+.\" IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+.\" PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT HOLDER(S) BE
+.\" LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+.\" CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+.\" SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+.\" BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+.\" WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+.\" OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE,
+.\" EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+.\" 
+.\" $FreeBSD$
+.Dt TCPRTT 8
+.Os
+.Sh NAME
+.Nm tcprtt
+.Nd Measures TCP handshake RTT using the stats(9) statistics framework
+.Sh SYNOPSIS
+.Nm
+.Op Fl f
+.Ar <host>
+.Ar <port>
+.Sh DESCRIPTION
+The
+.Nm
+utility reliably measures the TCP handshake round trip time
+using the stats(9) statistics framework.
+.Pp
+Both IPv4 and IPv6 are supported. If the <host> argument is a hostname
+containing serveral A and AAAA records, one line per record will be
+printed.
+.Pp
+The options are as follows:
+.Bl -tag -width indent
+.It Fl f
+Stop after the first address of each family
+.El
+.Pp
+For each address measured, a line is printed with 3 columns: address
+family (4 or 6), the numerical address and the measured RTT in
+milliseconds.
+.Pp
+When an error occurs for one of the measurement, the -errno(2) is
+printed in place of the RTT.
+.Pp
+If at least one entry returns an error, the command exits with the value
+of the last encountered error.
