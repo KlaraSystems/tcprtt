@@ -28,12 +28,13 @@
 
 #include <sys/cdefs.h>
 #include <sys/param.h>
+#include <sys/arb.h>
 #include <sys/errno.h>
 #include <sys/qmath.h>
 #include <sys/queue.h>
 #include <sys/socket.h>
 #include <sys/tree.h>
-#include <sys/stats.h> /* Must come after qmath.h and tree.h */
+#include <sys/stats.h>
 
 #include <netinet/in.h>
 #include <netinet/tcp.h>
