@@ -121,7 +121,7 @@ main(int argc, char *argv[])
 int
 usage()
 {
-	printf("Syntax: tcprtt [-f] <host> <port>%d\n", optopt);
+	printf("Syntax: tcprtt [-f] <host> <port>\n");
 	return(EX_USAGE);
 }
 
